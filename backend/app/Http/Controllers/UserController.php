@@ -21,6 +21,7 @@ class UserController extends Controller
             'email' => 'required|string',
             'phone' => 'required|string',
             'password' => 'required|string',
+            'profile_picture' => 'required|string',
             'city' => 'required|string',
             'state' => 'required|string'
         ]);
