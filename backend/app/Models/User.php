@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasMany(House::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     /**
      * The attributes that should be cast.
      *
