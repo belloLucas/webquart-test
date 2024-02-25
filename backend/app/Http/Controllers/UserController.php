@@ -38,12 +38,13 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string',
-            'phone' => 'required|string',
-            'password' => 'required|string',
-            'city' => 'required|string',
-            'state' => 'required|string'
+            'name' => 'string',
+            'email' => 'string',
+            'phone' => 'string',
+            'password' => 'string',
+            'profile_picture' => 'string',
+            'city' => 'string',
+            'state' => 'string'
         ]);
 
         $user->update($validatedData);
