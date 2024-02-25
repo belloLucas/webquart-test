@@ -35,8 +35,8 @@ class CommentController extends Controller
     public function update(Request $request, Comment $comment)
     {
         $validatedData = $request->validate([
-            'comment' => 'required|string',
-            'avaliation_note' => 'required|integer'
+            'comment' => 'string',
+            'avaliation_note' => 'integer'
         ]);
 
         $comment->update($validatedData);
