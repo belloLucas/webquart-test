@@ -17,7 +17,7 @@ class HouseController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required|integer',
+            'user_id' => 'required|integer|exists:users,id',
             'house_title' => 'required|string',
             'house_description' => 'required|string',
             'rent_price' => 'required|integer',
