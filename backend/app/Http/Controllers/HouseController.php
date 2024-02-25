@@ -44,16 +44,17 @@ class HouseController extends Controller
     public function update(Request $request, House $house)
     {
         $validatedData = $request->validate([
-            'house_title' => 'required|string',
-            'house_description' => 'required|string',
-            'rent_price' => 'required|integer',
-            'house_picture' => 'required|string',
-            'bedrooms' => 'required|integer',
-            'restrooms' => 'required|integer',
-            'bills_included' => 'required|boolean',
-            'street' => 'required|string',
-            'neighborhood' => 'required|string',
-            'city' => 'required|string',
+            'house_title' => 'string',
+            'house_description' => 'string',
+            'rent_price' => 'integer',
+            'house_picture' => 'string',
+            'bedrooms' => 'integer',
+            'restrooms' => 'integer',
+            'bills_included' => 'boolean',
+            'street' => 'string',
+            'neighborhood' => 'string',
+            'city' => 'string',
+            'state' => 'string'
         ]);
 
         $house->update($validatedData);
