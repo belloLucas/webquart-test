@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\House;
+use App\Models\Comment;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,9 @@ class HouseController extends Controller
             'house_description' => 'required|string',
             'rent_price' => 'required|integer',
             'house_picture' => 'required|string',
+            'bedrooms' => 'required|integer',
+            'restrooms' => 'required|integer',
+            'bills_included' => 'required|boolean',
             'street' => 'required|string',
             'neighborhood' => 'required|string',
             'city' => 'required|string',
@@ -44,6 +48,9 @@ class HouseController extends Controller
             'house_description' => 'required|string',
             'rent_price' => 'required|integer',
             'house_picture' => 'required|string',
+            'bedrooms' => 'required|integer',
+            'restrooms' => 'required|integer',
+            'bills_included' => 'required|boolean',
             'street' => 'required|string',
             'neighborhood' => 'required|string',
             'city' => 'required|string',
@@ -55,6 +62,7 @@ class HouseController extends Controller
 
     public function delete(House $house)
     {
+        Comment::where('house_id', $house->id)->delete();
         $house->delete();
         return response()->json(null, 204);
     }
