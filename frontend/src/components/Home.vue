@@ -1,6 +1,23 @@
-<script setup></script>
+<script setup>
+import { onMounted } from "vue";
+import { useAuthStore } from "../stores/auth";
 
-<template></template>
+const authStore = useAuthStore();
+
+onMounted(async () => {
+  await authStore.getUser();
+});
+</script>
+
+<template>
+  <div v-if="authStore.user">
+    <h1>{{ authStore.user?.name }}</h1>
+    <h1>{{ authStore.user?.email }}</h1>
+  </div>
+  <div v-else>
+    <h1>Faça login</h1>
+  </div>
+</template>
 
 <style lang="scss">
 @import "../assets/scss/app.scss";
