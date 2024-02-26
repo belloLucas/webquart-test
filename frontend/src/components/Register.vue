@@ -26,6 +26,9 @@ const form = ref({
               name="name"
               id="name"
             />
+            <div v-if="authStore.errors.name">
+              <span class="error">{{ authStore.errors.name[0] }}</span>
+            </div>
             <input
               type="email"
               placeholder="Email"
@@ -33,6 +36,9 @@ const form = ref({
               name="email"
               id="email"
             />
+            <div v-if="authStore.errors.email">
+              <span class="error">{{ authStore.errors.email[0] }}</span>
+            </div>
             <input
               type="password"
               placeholder="Senha"
@@ -40,6 +46,9 @@ const form = ref({
               name="password"
               id="password"
             />
+            <div v-if="authStore.errors.password">
+              <span class="error">{{ authStore.errors.password[0] }}</span>
+            </div>
             <input
               type="password"
               placeholder="Confirme sua senha"
@@ -47,6 +56,11 @@ const form = ref({
               name="password"
               id="password_confirmation"
             />
+            <div v-if="authStore.errors.password_confirmation">
+              <span class="error">{{
+                authStore.errors.password_confirmation[0]
+              }}</span>
+            </div>
           </div>
           <div class="buttons">
             <button type="submit">Cadastrar</button>
@@ -61,4 +75,7 @@ const form = ref({
 <style lang="scss">
 @import "../assets/scss/app.scss";
 @import "../assets/scss/form.scss";
+.container {
+  // height: 80%;
+}
 </style>

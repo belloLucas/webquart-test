@@ -24,6 +24,9 @@ const form = ref({
               id="email"
               placeholder="Email"
             />
+            <div v-if="authStore.errors.email">
+              <span class="error">{{ authStore.errors.email[0] }}</span>
+            </div>
             <input
               type="password"
               v-model="form.password"
@@ -31,6 +34,9 @@ const form = ref({
               id="password"
               placeholder="Senha"
             />
+            <div v-if="authStore.errors.password">
+              <span class="error">{{ authStore.errors.password[0] }}</span>
+            </div>
           </div>
           <div class="buttons">
             <button type="submit">Entrar</button>

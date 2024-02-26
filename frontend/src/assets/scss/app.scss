@@ -2,6 +2,7 @@ $white: #ffffff;
 $darker-white: #f7f7f7;
 $grey-blue: #55748f;
 $darker-grey-blue: #445d74;
+$red: #f1684f;
 $grey: #505458;
 $blue: #2392ec;
 $box-title-grey: #313a46;
@@ -23,15 +24,18 @@ h2,
 h3,
 h4,
 a,
-p {
+p,
+span {
   font-family: Helvetica;
 }
 
 a,
 p {
   font-size: 14px;
-  cursor: pointer;
+}
 
+a {
+  cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
@@ -44,4 +48,10 @@ button {
   &:hover {
     color: $blue;
   }
+}
+
+.error {
+  font-size: 12px;
+  margin-left: 5px;
+  color: $red;
 }
