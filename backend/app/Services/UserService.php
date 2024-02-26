@@ -17,11 +17,7 @@ class UserService
         $validatedData = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string',
-            'phone' => 'required|string',
             'password' => 'required|string',
-            'profile_picture' => 'required|string',
-            'city' => 'required|string',
-            'state' => 'required|string'
         ]);
 
         $user = User::create($validatedData);
@@ -36,13 +32,7 @@ class UserService
     public function updateUser($request, $user)
     {
         $validatedData = $request->validate([
-            'name' => 'string',
             'email' => 'string',
-            'phone' => 'string',
-            'password' => 'string',
-            'profile_picture' => 'string',
-            'city' => 'string',
-            'state' => 'string'
         ]);
 
         $user->update($validatedData);
