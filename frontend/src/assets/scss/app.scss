@@ -1,6 +1,7 @@
 $white: #ffffff;
 $darker-white: #f7f7f7;
 $grey-blue: #55748f;
+$darker-grey-blue: #445d74;
 $grey: #505458;
 $blue: #2392ec;
 $box-title-grey: #313a46;
@@ -33,5 +34,14 @@ p {
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+button {
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    color: $blue;
   }
 }

@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+import { useAuthStore } from "../stores/auth";
+
+const authStore = useAuthStore();
+</script>
 
 <template>
   <nav>
@@ -10,12 +14,20 @@
         <li>
           <router-link :to="{ name: 'Home' }">Início</router-link>
         </li>
-        <li>
-          <router-link :to="{ name: 'Login' }">Fazer Login</router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'Register' }">Criar Conta</router-link>
-        </li>
+        <template v-if="!authStore.user">
+          <li>
+            <router-link :to="{ name: 'Login' }">Fazer Login</router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'Register' }">Criar Conta</router-link>
+          </li>
+        </template>
+        <template v-else>
+          <button @click="authStore.handleLogout" class="logout-btn">
+            Sair
+          </button>
+          <button @click="" class="announce-house-btn">Anunciar</button>
+        </template>
       </ul>
     </div>
   </nav>
@@ -52,6 +64,23 @@ nav {
       a {
         color: $box-title-grey;
         text-decoration: none;
+      }
+    }
+    .logout-btn {
+      padding: 10px;
+      background-color: transparent;
+      border: none;
+    }
+
+    .announce-house-btn {
+      padding: 10px 20px;
+      background-color: $grey-blue;
+      color: $white;
+      border: none;
+      transition: 0.4s;
+
+      &:hover {
+        background-color: $darker-grey-blue;
       }
     }
   }
