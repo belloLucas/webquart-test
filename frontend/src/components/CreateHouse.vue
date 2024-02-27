@@ -179,7 +179,11 @@ const form = ref({
       flex-direction: column;
       text-align: left;
       gap: 1rem;
-      width: 29%;
+      width: 40%;
+
+      @media screen and (max-width: 968px) {
+        width: 70%;
+      }
 
       h1 {
         text-align: left;
@@ -231,9 +235,6 @@ const form = ref({
       .address {
         display: flex;
         flex-direction: column;
-      }
-
-      input[type="file"] {
       }
 
       button {
