@@ -48,6 +48,11 @@ nav {
   background-color: $white;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
   .left img {
     height: 30px;
   }
@@ -60,9 +65,22 @@ nav {
       padding: 10px;
       list-style-type: none;
       cursor: pointer;
+      transition: 0.3s;
 
       :hover {
         color: $blue;
+      }
+
+      @media screen and (max-width: 450px) {
+        border: 1px solid $grey-blue;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: $darker-grey-blue;
+          a {
+            color: white;
+          }
+        }
       }
 
       a {
