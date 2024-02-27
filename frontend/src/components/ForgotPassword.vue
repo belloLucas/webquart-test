@@ -10,6 +10,9 @@ const email = ref("");
   <div class="container">
     <div class="wrapper">
       <h4>Esqueceu sua senha?</h4>
+      <div class="status" v-if="authStore.status">
+        {{ authStore.status }}
+      </div>
       <form
         class="form"
         @submit.prevent="authStore.handleForgotPassword(email)"

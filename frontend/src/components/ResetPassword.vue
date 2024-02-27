@@ -18,8 +18,11 @@ const form = ref({
   <section>
     <div class="container">
       <div class="wrapper">
-        <h4>Acesse sua conta</h4>
+        <h4>Altere sua senha</h4>
         <form @submit.prevent="authStore.handleResetPassword(form)">
+          <div class="status" v-if="authStore.status">
+            {{ authStore.status }}
+          </div>
           <div class="inputs">
             <input
               type="password"
