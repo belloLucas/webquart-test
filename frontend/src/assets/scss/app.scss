@@ -3,6 +3,7 @@ $darker-white: #f7f7f7;
 $grey-blue: #55748f;
 $darker-grey-blue: #445d74;
 $red: #f1684f;
+$light-grey: #eeeeeef9;
 $grey: #505458;
 $blue: #2392ec;
 $box-title-grey: #313a46;
@@ -25,12 +26,14 @@ h3,
 h4,
 a,
 p,
-span {
+span,
+label {
   font-family: Helvetica;
 }
 
 a,
-p {
+p,
+label {
   font-size: 14px;
 }
 
