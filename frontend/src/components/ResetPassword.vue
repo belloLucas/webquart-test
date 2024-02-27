@@ -1,12 +1,16 @@
 <script setup>
-import { ref } from "vue";
 import { useAuthStore } from "../stores/auth";
+import { ref } from "vue";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const authStore = useAuthStore();
 
 const form = ref({
-  email: "",
   password: "",
+  password_confirmation: "",
+  email: route.query.email,
+  token: route.params.token,
 });
 </script>
 
@@ -15,18 +19,8 @@ const form = ref({
     <div class="container">
       <div class="wrapper">
         <h4>Acesse sua conta</h4>
-        <form @submit.prevent="authStore.handleLogin(form)">
+        <form @submit.prevent="authStore.handleResetPassword(form)">
           <div class="inputs">
-            <input
-              type="email"
-              v-model="form.email"
-              name="email"
-              id="email"
-              placeholder="Email"
-            />
-            <div v-if="authStore.errors.email">
-              <span class="error">{{ authStore.errors.email[0] }}</span>
-            </div>
             <input
               type="password"
               v-model="form.password"
@@ -37,11 +31,16 @@ const form = ref({
             <div v-if="authStore.errors.password">
               <span class="error">{{ authStore.errors.password[0] }}</span>
             </div>
+            <input
+              type="password"
+              placeholder="Confirme sua senha"
+              v-model="form.password_confirmation"
+              name="password"
+              id="password_confirmation"
+            />
           </div>
           <div class="buttons">
-            <button type="submit">Entrar</button>
-            <router-link to="/forgot-password">Esqueceu sua senha?</router-link>
-            <p>Ainda não se cadastrou? <a>Crie uma conta!</a></p>
+            <button type="submit">Alterar senha</button>
           </div>
         </form>
       </div>
