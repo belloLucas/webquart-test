@@ -29,6 +29,11 @@ const routes = [
     name: "CreateHouse",
     component: () => import("../components/CreateHouse.vue"),
   },
+  {
+    path: "/house/:id",
+    name: "House",
+    component: () => import("../components/House.vue"),
+  },
 ];
 
 const router = createRouter({
