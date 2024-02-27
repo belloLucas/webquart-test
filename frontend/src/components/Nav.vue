@@ -7,7 +7,9 @@ const authStore = useAuthStore();
 <template>
   <nav>
     <div class="left">
-      <img src="../assets/images/logo_medio.png" />
+      <router-link :to="{ name: 'Home' }">
+        <img src="../assets/images/logo_medio.png" />
+      </router-link>
     </div>
     <div class="right">
       <ul>
@@ -26,7 +28,9 @@ const authStore = useAuthStore();
           <button @click="authStore.handleLogout" class="logout-btn">
             Sair
           </button>
-          <button @click="" class="announce-house-btn">Anunciar</button>
+          <router-link :to="{ name: 'CreateHouse' }" class="announce-house-btn"
+            >Anunciar</router-link
+          >
         </template>
       </ul>
     </div>

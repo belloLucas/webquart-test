@@ -85,5 +85,31 @@ export const useAuthStore = defineStore("auth", {
         }
       }
     },
+    async handleCreateHouse(data) {
+      this.authErrors = [];
+      await this.getToken();
+
+      try {
+        await axios.post("/api/houses", {
+          user_id: this.authUser.id,
+          house_title: data.house_title,
+          house_description: data.house_description,
+          rent_price: data.rent_price,
+          house_picture: data.house_images,
+          bedrooms: data.bedrooms,
+          restrooms: data.restrooms,
+          bills_included: data.bills_included,
+          street: data.street,
+          neighborhood: data.neighborhood,
+          city: data.city,
+          state: data.state,
+        });
+        this.router.push("/");
+      } catch (error) {
+        if (error.response.status === 422) {
+          this.authErrors = error.response.data.errors;
+        }
+      }
+    },
   },
 });

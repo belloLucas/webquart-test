@@ -75,7 +75,4 @@ const form = ref({
 <style lang="scss">
 @import "../assets/scss/app.scss";
 @import "../assets/scss/form.scss";
-.container {
-  // height: 80%;
-}
 </style>
