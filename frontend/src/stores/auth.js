@@ -6,9 +6,11 @@ export const useAuthStore = defineStore("auth", {
     authUser: null,
     authErrors: [],
     authStatus: [],
+    registeredHouses: [],
   }),
   getters: {
     user: (state) => state.authUser,
+    house: (state) => state.registeredHouses,
     errors: (state) => state.authErrors,
     status: (state) => state.authStatus,
   },
@@ -110,6 +112,12 @@ export const useAuthStore = defineStore("auth", {
           this.authErrors = error.response.data.errors;
         }
       }
+    },
+    async handleHouseListing() {
+      const data = await axios.get("/api/houses");
+      console.log(data.data);
+      this.registeredHouses = data.data;
+      console.log(this.registeredHouses);
     },
   },
 });
