@@ -92,6 +92,19 @@ nav {
       padding: 10px;
       background-color: transparent;
       border: none;
+
+      @media screen and (max-width: 450px) {
+        padding: 0px 15px;
+        border: 1px solid $grey-blue;
+        border-radius: 5px;
+        color: black;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: $darker-grey-blue;
+          color: white;
+        }
+      }
     }
 
     .announce-house-btn {
