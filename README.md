@@ -21,6 +21,7 @@
 
 <p align="center">
  •  <a href="#started">Início</a> • 
+  <a href="#run">Rodando o projeto</a> • 
   <a href="#routes">API Endpoints</a>
 </p>
 
@@ -39,7 +40,7 @@
 - [Composer](https://getcomposer.org/)
 - [Git](https://git-scm.com/)
 
-<h3>Clonando</h3>
+<h3 id="run">Clonando</h3>
 
 Clone o projeto:
 
