@@ -42,7 +42,11 @@
 
 <h3 id="db">Esquema Banco de Dados</h3>
 
-![db_schema](https://github.com/belloLucas/webquart-test/assets/68472772/90655b71-4dfb-4e12-a9b8-75fbd9b4a06f)
+<div width="200px">
+  
+<img src="https://github.com/belloLucas/webquart-test/assets/68472772/90655b71-4dfb-4e12-a9b8-75fbd9b4a06f" alt="database schema" width="600px">
+
+</div>
 
 <h3 id="run">Clonando</h3>
 
