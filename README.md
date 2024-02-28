@@ -30,8 +30,6 @@
 
 <h2 id="started">🚀 Getting started</h2>
 
-Here you describe how to run your project locally
-
 <h3>Pré requisitos</h3>
 
 - [Docker](https://www.docker.com/)
@@ -43,7 +41,7 @@ Here you describe how to run your project locally
 
 <h3>Clonando</h3>
 
-How to clone your project
+Clone o projeto:
 
 ```bash
 git clone https://github.com/belloLucas/webquart-test
