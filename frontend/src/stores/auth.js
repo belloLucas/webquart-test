@@ -7,6 +7,7 @@ export const useAuthStore = defineStore("auth", {
     authErrors: [],
     authStatus: [],
     registeredHouses: [],
+    userHouses: [],
     openedHouse: [],
     user_information: [],
     registeredComments: [],
@@ -15,6 +16,7 @@ export const useAuthStore = defineStore("auth", {
     user: (state) => state.authUser,
     house: (state) => state.registeredHouses,
     specificHouse: (state) => state.specificHouse,
+    allUserHouses: (state) => state.userHouses,
     errors: (state) => state.authErrors,
     status: (state) => state.authStatus,
     specificUser: (state) => state.user,
@@ -152,6 +154,39 @@ export const useAuthStore = defineStore("auth", {
     async handleCommentsListing(house_id) {
       const data = await axios.get(`/api/comments/${house_id}`);
       this.registeredComments = data.data;
+    },
+    async handleUserHousesListing(user_id) {
+      const data = await axios.get(`/api/user/houses/${user_id}`);
+      this.userHouses = data.data;
+      console.log(data.data);
+    },
+    async handleHouseDelete(house_id) {
+      await axios.delete(`/api/houses/${house_id}`);
+    },
+    async handleHouseEdit(data, house_id) {
+      this.authErrors = [];
+      await this.getToken();
+
+      try {
+        await axios.patch(`/api/houses/${house_id}`, {
+          house_title: data.house_title,
+          house_description: data.house_description,
+          rent_price: data.rent_price,
+          house_picture: data.house_images,
+          bedrooms: data.bedrooms,
+          restrooms: data.restrooms,
+          bills_included: data.bills_included,
+          street: data.street,
+          neighborhood: data.neighborhood,
+          city: data.city,
+          state: data.state,
+        });
+        this.router.push(`/house/${house_id}`);
+      } catch (error) {
+        if (error.response.status === 422) {
+          this.authErrors = error.response.data.errors;
+        }
+      }
     },
   },
 });
