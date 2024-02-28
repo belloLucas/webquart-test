@@ -26,5 +26,12 @@ services:
         volumes:
             - pgdata:/var/lib/postgresql/data
 
+    frontend:
+        build: ../frontend
+        ports:
+            - "5173:5173"
+        volumes:
+            - ../frontend:/app
+
 volumes:
     pgdata: {}
