@@ -63,7 +63,7 @@ Dentro do diretório backend (`/backend`) renomeie o arquivo `.env.example` para
 
 <h3>Iniciando</h3>
 
-Como iniciar o projeto
+Como iniciar o projeto:
 
 <h3> Backend: </h3>
 
@@ -75,6 +75,8 @@ docker-compose up -d
 docker exec webquarto php artisan migrate
 ``````
 
+Após o container estar rodando, a API ficará disponível na url `localhost:8000`
+
 <h3> Frontend: </h3>
 
 ```bash
@@ -82,6 +84,8 @@ cd webquarto-test/frontend
 npm install
 npm run dev
 ``````
+
+Depois de executar o `npm run dev` a aplicação front end deverá estar disponível na url `localhost:5173`. Se certifique disso.
 
 
 <h2 id="routes">📍 API Endpoints</h2>
