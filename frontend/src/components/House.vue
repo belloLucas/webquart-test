@@ -51,7 +51,7 @@ const average = async () => {
     <div class="house-container">
       <div class="image">
         <!-- <img :src="authStore.openedHouse?.house_image" alt="Imagem da casa" /> -->
-        <img src="../assets/images/room.jpg" />
+        <img src="../assets/images/house_image_placeholder.png" />
         <p class="average_note">
           Nota média deste imóvel:
           {{ averageNote }}
@@ -89,7 +89,7 @@ const average = async () => {
 
         <h4>Informações do proprietário</h4>
         <div class="user-information">
-          <img src="https://fakeimg.pl/100x100" />
+          <img src="../assets/images/profile_picture_placeholder.png" />
           <h5>{{ authStore.user_information?.name }}</h5>
         </div>
 
