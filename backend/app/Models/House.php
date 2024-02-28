@@ -15,7 +15,6 @@ class House extends Model
         'house_title',
         'house_description',
         'rent_price',
-        'house_picture',
         'bedrooms',
         'restrooms',
         'bills_included',
