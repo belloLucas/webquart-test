@@ -40,6 +40,10 @@
 - [Composer](https://getcomposer.org/)
 - [Git](https://git-scm.com/)
 
+<h3 id="db">Esquema Banco de Dados</h3>
+
+![db_schema](https://github.com/belloLucas/webquart-test/assets/68472772/90655b71-4dfb-4e12-a9b8-75fbd9b4a06f)
+
 <h3 id="run">Clonando</h3>
 
 Clone o projeto:
@@ -91,11 +95,67 @@ Here you can list the main routes of your API, and what are their expected reque
 | <kbd>GET /api/users/{user_id}</kbd>     | Retorna o usuário com id correspondente [request details](#get-user-detail)
 | <kbd>POST /register</kbd>                 | Registra um novo usuário com as informações passadas no corpo da requisição [request details](#register)
 | <kbd>POST /login</kbd>                    | Autentica um usuário com base nas informações passadas no corpo da requisição e comparadas as informações do banco de dados[request details](#login)
-| <kbd>GET /verify-email/{id}/{hash}</kbd>  | Verifica o email do usuário [request details](#verify-email)
-| <kbd>POST /email/verification-notification</kbd> | Envia notificação de verificação de email [request details](#verification-notification)
 | <kbd>POST /logout</kbd>                   | Encerra a sessão do usuário [request details](#logout)
 | <kbd>POST /api/comments</kbd>     | Cria um comentário com as informações passadas no corpo da requisição [request details](#post-comments-detail)
 | <kbd>GET /api/comments/{house_id}</kbd>     | Retorna todos os comentários criados em uma casa específica, com base no id dela [request details](#get-comments-from-house-detail)
+
+
+<h3 id="get-users-detail">GET /api/users </h3>
+
+**RESPONSE**
+```json
+{
+   "id": 2,
+   "email": "email@email.com",
+   "created_at": "2024-02-26T20:07:26.000000Z",
+   "updated_at": "2024-02-26T20:07:26.000000Z",
+   "name": "jane",
+   "email_verified_at": null
+},
+...
+```
+
+<h3 id="get-user-detail">GET /api/users/{user_id} </h3>
+
+**RESPONSE**
+```json
+{
+   "id": 2,
+   "email": "email@email.com",
+   "created_at": "2024-02-26T20:07:26.000000Z",
+   "updated_at": "2024-02-26T20:07:26.000000Z",
+   "name": "jane",
+   "email_verified_at": null
+},
+```
+
+<h3 id="register">POST /register </h3>
+
+**REQUEST**
+```json
+{
+  "name": "John Doe",
+  "email": "test@example.com",
+  "password": "4444444"
+}
+```
+
+<h3 id="login">POST /login </h3>
+
+**REQUEST**
+```json
+{
+  "email": "test@example.com",
+  "password": "4444444"
+}
+```
+
+<h3 id="logout">POST /logout </h3>
+
+**REQUEST**
+```json
+{}
+```
 
 <h3 id="get-houses-detail">GET /api/houses </h3>
 
@@ -161,7 +221,7 @@ Here you can list the main routes of your API, and what are their expected reque
 
 <h3 id="get-user-houses-detail">GET /api/user/houses/{user_id} </h3>
 
-**REQUEST**
+**RESPONSE**
 ```json
 {
 {
@@ -246,60 +306,25 @@ Here you can list the main routes of your API, and what are their expected reque
 }
 ```
 
-<h3 id="get-users-detail">GET /api/users </h3>
+<h3 id="post-comments-detail">POST /api/comments </h3>
 
 **REQUEST**
 ```json
 {
-   "id": 2,
-   "email": "email@email.com",
-   "created_at": "2024-02-26T20:07:26.000000Z",
-   "updated_at": "2024-02-26T20:07:26.000000Z",
-   "name": "jane",
-   "email_verified_at": null
-},
-...
-```
-
-<h3 id="get-user-detail">GET /api/users/{user_id} </h3>
-
-**REQUEST**
-```json
-{
-   "id": 2,
-   "email": "email@email.com",
-   "created_at": "2024-02-26T20:07:26.000000Z",
-   "updated_at": "2024-02-26T20:07:26.000000Z",
-   "name": "jane",
-   "email_verified_at": null
-},
-```
-
-<h3 id="register">POST /register </h3>
-
-**REQUEST**
-```json
-{
-  "name": "John Doe",
-  "email": "test@example.com",
-  "password": "4444444"
+  "house_id": 1,
+  "user_id": 1,
+  "comment": "Lorem Ipsum",
+  "avaliation_note": 4
 }
 ```
 
-<h3 id="login">POST /login </h3>
+<h3 id="get-comments-from-house-detail">GET /api/comments/{house_id} </h3>
 
-**REQUEST**
+**RESPONSE**
 ```json
 {
-  "email": "test@example.com",
-  "password": "4444444"
-}
-```
-
-<h3 id="logout">POST /logout </h3>
-
-**REQUEST**
-```json
-{
+  "comment": "test comment",
+  "avaliation_note": 4,
+  "name": "Test User"
 }
 ```
