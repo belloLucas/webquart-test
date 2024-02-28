@@ -12,6 +12,16 @@ class CommentService
         return response()->json($comments);
     }
 
+    public function findAllCommentsFromHouse($house_id){
+        $comments = Comment::join('users', 'comments.user_id', '=', 'users.id')
+            ->where('house_id', $house_id)
+            ->select('comments.comment', 'comments.avaliation_note', 'users.name')
+            ->get();
+        return response()->json($comments);
+    }
+
+
+
     public function createComment($request)
     {
         $validatedData = $request->validate([
@@ -25,10 +35,10 @@ class CommentService
         return response()->json($comment, 201);
     }
 
-    public function showComment($comment)
-    {
-        return response()->json($comment);
-    }
+//    public function showComment($comment)
+//    {
+//        return response()->json($comment);
+//    }
 
     public function updateComment($request, $comment)
     {

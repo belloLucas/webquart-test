@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HouseController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,25 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/houses', [HouseController::class, 'index']);
+
+Route::get('/houses/{house}', [HouseController::class, 'show']);
+
+Route::post('/houses', [HouseController::class, 'store'])
+    ->middleware('auth')
+    ->name('houses.store');
+
+Route::put('/houses/{house}', [HouseController::class, 'update'])
+    ->middleware('auth')
+    ->name('houses.update');
+
+Route::delete('/houses/{house}', [HouseController::class, 'destroy']);
+
+Route::get('/users', [UserController::class, 'index']);
+
+Route::get('/users/{user}', [UserController::class, 'show']);
+
+Route::post('/comments', [CommentController::class, 'store']);
+
+Route::get('/comments/{house}', [CommentController::class, 'index']);

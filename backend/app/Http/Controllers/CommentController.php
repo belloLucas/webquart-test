@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\House;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\CommentService;
@@ -14,9 +15,10 @@ class CommentController extends Controller
         $this->commentService = $commentService;
     }
 
-    public function index()
+    public function index(House $house)
     {
-        return $this->commentService->findAllComments();
+//        return $this->commentService->findAllCommentsFromHouse(Integer $house_id);
+        return $this->commentService->findAllCommentsFromHouse($house->id);
     }
 
     public function store(Request $request)
