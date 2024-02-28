@@ -21,6 +21,7 @@
 
 <p align="center">
  •  <a href="#started">Início</a> • 
+  <a href="#db">Esquema Banco de Dados</a> • 
   <a href="#run">Rodando o projeto</a> • 
   <a href="#routes">API Endpoints</a>
 </p>
@@ -42,7 +43,7 @@
 
 <h3 id="db">Esquema Banco de Dados</h3>
 
-<div width="200px">
+<div id="db" width="200px">
   
 <img src="https://github.com/belloLucas/webquart-test/assets/68472772/90655b71-4dfb-4e12-a9b8-75fbd9b4a06f" alt="database schema" width="600px">
 
