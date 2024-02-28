@@ -29,7 +29,6 @@ const form = ref({
   neighborhood: "",
   city: "",
   state: "",
-  house_images: "",
 });
 </script>
 
@@ -158,12 +157,6 @@ const form = ref({
             <span class="error">{{ authStore.errors.state[0] }}</span>
           </div>
         </div>
-        <input
-          v-model="form.house_images"
-          type="text"
-          name="house_images"
-          id="house_images"
-        />
         <button type="submit">Cadastrar imóvel</button>
       </form>
     </div>
