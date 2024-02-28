@@ -7,12 +7,16 @@ export const useAuthStore = defineStore("auth", {
     authErrors: [],
     authStatus: [],
     registeredHouses: [],
+    openedHouse: [],
+    user_information: [],
   }),
   getters: {
     user: (state) => state.authUser,
     house: (state) => state.registeredHouses,
+    specificHouse: (state) => state.specificHouse,
     errors: (state) => state.authErrors,
     status: (state) => state.authStatus,
+    specificUser: (state) => state.user,
   },
   actions: {
     async getToken() {
@@ -115,9 +119,15 @@ export const useAuthStore = defineStore("auth", {
     },
     async handleHouseListing() {
       const data = await axios.get("/api/houses");
-      console.log(data.data);
       this.registeredHouses = data.data;
-      console.log(this.registeredHouses);
+    },
+    async handleSpecificHouse(id) {
+      const data = await axios.get(`/api/houses/${id}`);
+      this.openedHouse = data.data;
+    },
+    async handleFindUser(id) {
+      const data = await axios.get(`/api/users/${id}`);
+      this.user_information = data.data;
     },
   },
 });
