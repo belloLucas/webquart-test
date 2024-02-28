@@ -23,6 +23,9 @@ onMounted(async () => {
         :to="{ name: 'House', params: { id: house.id } }"
       >
         <div class="box">
+          <div class="img">
+            <img src="../assets/images/house_image_placeholder.png" />
+          </div>
           <p class="rent_price">R$ {{ house.rent_price }} por mês</p>
           <h3 class="house_title">{{ house.house_title }}</h3>
           <p class="house_description">{{ house.house_description }}</p>
@@ -67,8 +70,8 @@ h1 {
     .box {
       display: flex;
       flex-direction: column;
-      min-height: 215px;
-      max-height: 215px;
+      min-height: 450px;
+      max-height: 450px;
       gap: 10px;
       margin: 10px 0;
       padding: 15px;
@@ -82,6 +85,12 @@ h1 {
 
       &:hover {
         transform: scale(1.03);
+      }
+
+      .img {
+        img {
+          max-width: 100%;
+        }
       }
 
       .rent_price {
