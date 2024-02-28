@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\House;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\HouseService;
@@ -25,9 +26,14 @@ class HouseController extends Controller
         return $this->houseService->createHouse($request);
     }
 
-    public function show(House $house)
+    public function show (House $house)
     {
         return $this->houseService->showHouse($house);
+    }
+
+    public function showUserHouses(User $user)
+    {
+        return $this->houseService->showUserHouses($user);
     }
 
     public function update(Request $request, House $house)

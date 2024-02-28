@@ -38,6 +38,12 @@ class HouseService
         return response()->json($house);
     }
 
+    public function showUserHouses($user)
+    {
+        $houses = House::where('user_id', $user->id)->get();
+        return response()->json($houses);
+    }
+
     public function updateHouse($request, $house)
     {
         $validatedData = $request->validate([

@@ -25,15 +25,17 @@ Route::get('/houses', [HouseController::class, 'index']);
 
 Route::get('/houses/{house}', [HouseController::class, 'show']);
 
+Route::get('/user/houses/{user}', [HouseController::class, 'showUserHouses']);
+
 Route::post('/houses', [HouseController::class, 'store'])
     ->middleware('auth')
     ->name('houses.store');
 
-Route::put('/houses/{house}', [HouseController::class, 'update'])
+Route::patch('/houses/{house}', [HouseController::class, 'update'])
     ->middleware('auth')
     ->name('houses.update');
 
-Route::delete('/houses/{house}', [HouseController::class, 'destroy']);
+Route::delete('/houses/{house}', [HouseController::class, 'delete']);
 
 Route::get('/users', [UserController::class, 'index']);
 
