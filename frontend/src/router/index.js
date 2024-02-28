@@ -34,6 +34,16 @@ const routes = [
     name: "House",
     component: () => import("../components/House.vue"),
   },
+  {
+    path: "/user/ads",
+    name: "UserAds",
+    component: () => import("../components/UserAds.vue"),
+  },
+  {
+    path: "/house/edit/:id",
+    name: "EditHouse",
+    component: () => import("../components/EditHouse.vue"),
+  },
 ];
 
 const router = createRouter({

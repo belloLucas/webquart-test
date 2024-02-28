@@ -28,6 +28,9 @@ const authStore = useAuthStore();
           <button @click="authStore.handleLogout" class="logout-btn">
             Sair
           </button>
+          <router-link :to="{ name: 'UserAds' }" class="user-ads-btn">
+            Anuncios
+          </router-link>
           <router-link :to="{ name: 'CreateHouse' }" class="announce-house-btn"
             >Anunciar</router-link
           >
@@ -116,6 +119,18 @@ nav {
 
       &:hover {
         background-color: $darker-grey-blue;
+      }
+    }
+
+    .user-ads-btn {
+      padding: 10px 20px;
+      color: black;
+      border: none;
+      transition: 0.4s;
+      text-decoration: none;
+
+      &:hover {
+        color: $blue;
       }
     }
   }
