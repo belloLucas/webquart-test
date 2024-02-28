@@ -10,6 +10,8 @@ onMounted(async () => {
   await authStore.getUser();
 });
 
+const averageNote = ref(0);
+
 (async () => {
   await authStore.handleSpecificHouse(id);
   const user_id = authStore.openedHouse?.user_id;
@@ -17,6 +19,7 @@ onMounted(async () => {
     authStore.handleFindUser(user_id);
   }
   await authStore.handleCommentsListing(id);
+  averageNote.value = await average();
 })();
 
 const form = ref({
@@ -32,6 +35,15 @@ const isOwner = () => {
   }
   return false;
 };
+
+const average = async () => {
+  const comments = authStore.registeredComments;
+  let sum = 0;
+  comments.forEach((comment) => {
+    sum += comment.avaliation_note;
+  });
+  return sum / comments.length;
+};
 </script>
 
 <template>
@@ -40,7 +52,10 @@ const isOwner = () => {
       <div class="image">
         <!-- <img :src="authStore.openedHouse?.house_image" alt="Imagem da casa" /> -->
         <img src="../assets/images/room.jpg" />
-        <p class="average_note">Nota média deste imóvel: 5</p>
+        <p class="average_note">
+          Nota média deste imóvel:
+          {{ averageNote }}
+        </p>
       </div>
       <div class="main-informations">
         <div class="title_note">
@@ -53,10 +68,12 @@ const isOwner = () => {
           R$ {{ authStore.openedHouse?.rent_price }} por mês
         </p>
         <h4>Comidades</h4>
+
         <div class="facilities">
           <p>Quartos: {{ authStore.openedHouse?.bedrooms }}</p>
           <p>Banheiros: {{ authStore.openedHouse?.restrooms }}</p>
         </div>
+
         <h4>Localização</h4>
         <div class="address">
           <p>
@@ -69,11 +86,13 @@ const isOwner = () => {
         <p>
           {{ authStore.openedHouse?.house_description }}
         </p>
+
         <h4>Informações do proprietário</h4>
         <div class="user-information">
           <img src="https://fakeimg.pl/100x100" />
           <h5>{{ authStore.user_information?.name }}</h5>
         </div>
+
         <h4>Comentários</h4>
         <div v-if="authStore.user && isOwner() === false">
           <div class="box_create_comment">
@@ -107,7 +126,7 @@ const isOwner = () => {
           <p class="text_comment">
             {{ comment.comment }}
           </p>
-          <p class="avaliation_note">Nota: 5/5</p>
+          <p class="avaliation_note">Nota: {{ comment.avaliation_note }}/5</p>
         </div>
       </div>
     </div>
