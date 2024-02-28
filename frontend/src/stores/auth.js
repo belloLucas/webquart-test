@@ -9,6 +9,7 @@ export const useAuthStore = defineStore("auth", {
     registeredHouses: [],
     openedHouse: [],
     user_information: [],
+    registeredComments: [],
   }),
   getters: {
     user: (state) => state.authUser,
@@ -17,6 +18,7 @@ export const useAuthStore = defineStore("auth", {
     errors: (state) => state.authErrors,
     status: (state) => state.authStatus,
     specificUser: (state) => state.user,
+    comments: (state) => state.registeredComments,
   },
   actions: {
     async getToken() {
@@ -128,6 +130,28 @@ export const useAuthStore = defineStore("auth", {
     async handleFindUser(id) {
       const data = await axios.get(`/api/users/${id}`);
       this.user_information = data.data;
+    },
+    async handleCreateComment(data) {
+      this.authErrors = [];
+      await this.getToken();
+
+      try {
+        await axios.post("/api/comments", {
+          house_id: data.house_id,
+          user_id: this.authUser.id,
+          comment: data.comment,
+          avaliation_note: data.avaliation_note,
+        });
+        this.router.push(`/house/${data.house_id}`);
+      } catch (error) {
+        if (error.response.status === 422) {
+          this.authErrors = error.response.data.errors;
+        }
+      }
+    },
+    async handleCommentsListing(house_id) {
+      const data = await axios.get(`/api/comments/${house_id}`);
+      this.registeredComments = data.data;
     },
   },
 });

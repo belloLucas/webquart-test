@@ -1,9 +1,14 @@
 <script setup>
+import { onMounted, ref } from "vue";
 import { useAuthStore } from "../stores/auth";
 const authStore = useAuthStore();
 
 const url = window.location.href;
 const id = url.substring(url.lastIndexOf("/") + 1);
+
+onMounted(async () => {
+  await authStore.getUser();
+});
 
 (async () => {
   await authStore.handleSpecificHouse(id);
@@ -11,7 +16,22 @@ const id = url.substring(url.lastIndexOf("/") + 1);
   if (user_id) {
     authStore.handleFindUser(user_id);
   }
+  await authStore.handleCommentsListing(id);
 })();
+
+const form = ref({
+  user_id: authStore.openedHouse?.user_id,
+  house_id: id,
+  comment: "",
+  avaliation_note: "",
+});
+
+const isOwner = () => {
+  if (authStore.user?.id === authStore.openedHouse?.user_id) {
+    return true;
+  }
+  return false;
+};
 </script>
 
 <template>
@@ -55,11 +75,37 @@ const id = url.substring(url.lastIndexOf("/") + 1);
           <h5>{{ authStore.user_information?.name }}</h5>
         </div>
         <h4>Comentários</h4>
-        <div class="comment">
-          <h6 class="user_name">Test User</h6>
+        <div v-if="authStore.user && isOwner() === false">
+          <div class="box_create_comment">
+            <h5>Deixe um comentário</h5>
+            <form
+              @submit.prevent="authStore.handleCreateComment(form)"
+              class="comment_form"
+            >
+              <textarea v-model="form.comment" name="comment" />
+              <input
+                type="number"
+                v-model="form.avaliation_note"
+                name="avaliation_note"
+                min="1"
+                max="5"
+                id="avaliation_note"
+                placeholder="Envie sua nota para este imóvel"
+              />
+              <button type="submit">Enviar comentário</button>
+            </form>
+          </div>
+        </div>
+        <div
+          v-for="comment in authStore.registeredComments"
+          :key="comment.id"
+          class="comment"
+        >
+          <h6 class="user_name">
+            {{ comment.name }}
+          </h6>
           <p class="text_comment">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            dictum nisl leo, nec ornare orci gravida non.
+            {{ comment.comment }}
           </p>
           <p class="avaliation_note">Nota: 5/5</p>
         </div>
@@ -211,6 +257,44 @@ const id = url.substring(url.lastIndexOf("/") + 1);
         padding: 5px;
         border: 1px solid $lighter-grey;
         border-radius: 50%;
+      }
+    }
+
+    .box_create_comment {
+      width: 50%;
+
+      h5 {
+        margin-bottom: 10px;
+      }
+
+      .comment_form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      textarea,
+      input[type="text"],
+      input[type="number"],
+      button {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid $light-grey;
+      }
+
+      textarea {
+        height: 100px;
+        resize: none;
+      }
+
+      button {
+        background-color: $grey-blue;
+        color: white;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: $darker-grey-blue;
+        }
       }
     }
 

@@ -89,6 +89,7 @@ const form = ref({
             <span class="error">{{ authStore.errors.restrooms[0] }}</span>
           </div>
         </div>
+
         <h1>Comodidades</h1>
         <div class="radio">
           <label>Contas inclusas?</label>
@@ -126,6 +127,7 @@ const form = ref({
             </div>
           </div>
         </div>
+
         <h1>Endereço</h1>
         <div class="address">
           <label>Rua</label>
