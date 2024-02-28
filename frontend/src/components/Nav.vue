@@ -132,6 +132,28 @@ nav {
       &:hover {
         color: $blue;
       }
+
+      @media screen and (max-width: 450px) {
+        padding: 0px 15px;
+        border: 1px solid $grey-blue;
+        border-radius: 5px;
+        color: black;
+        transition: 0.3s;
+        line-height: 40px;
+
+        &:hover {
+          background-color: $darker-grey-blue;
+          color: white;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        padding: 0px 10px;
+      }
+
+      @media screen and (max-width: 350px) {
+        padding: 0px 5px;
+      }
     }
   }
 }
