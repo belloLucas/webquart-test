@@ -70,9 +70,6 @@ Como iniciar o projeto:
 ```bash
 cd webquarto-test/backend
 composer install
-docker-compose build
-docker-compose up -d
-docker exec webquarto php artisan migrate
 ``````
 
 Após o container estar rodando, a API ficará disponível na url `localhost:8000`
@@ -82,8 +79,15 @@ Após o container estar rodando, a API ficará disponível na url `localhost:800
 ```bash
 cd webquarto-test/frontend
 npm install
-npm run dev
 ``````
+<h3> Rodando os containers Docker: </h3>
+
+```
+cd webquarto-test/backend
+docker-compose build
+docker-compose up
+docker exec webquarto php artisan migrate
+```
 
 Após o container rodar, o Front End estará disponível na url `localhost:5173`
 
