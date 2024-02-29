@@ -88,7 +88,10 @@ docker-compose up
 docker exec webquarto php artisan migrate
 ```
 
-Após rodar todos os containers, o back end estará rodando na url `localhost:8000` e o Front End estará disponível na url `localhost:5173`
+Após rodar todos os containers os projetos estarão rodando nas seguintes url:
+
+- Back End: `localhost:8000`
+- Front End: `localhost:5173`
 
 <h2 id="routes">📍 API Endpoints</h2>
 
