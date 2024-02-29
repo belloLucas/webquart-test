@@ -72,7 +72,6 @@ cd webquarto-test/backend
 composer install
 ``````
 
-Após o container estar rodando, a API ficará disponível na url `localhost:8000`
 
 <h3> Frontend: </h3>
 
@@ -89,7 +88,7 @@ docker-compose up
 docker exec webquarto php artisan migrate
 ```
 
-Após o container rodar, o Front End estará disponível na url `localhost:5173`
+Após rodar todos os containers, o back end estará rodando na url `localhost:8000` e o Front End estará disponível na url `localhost:5173`
 
 <h2 id="routes">📍 API Endpoints</h2>
 
