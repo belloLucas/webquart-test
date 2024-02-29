@@ -54,7 +54,7 @@
 Clone o projeto:
 
 ```bash
-git clone https://github.com/belloLucas/webquart-test
+git clone https://github.com/belloLucas/webquarto-test
 ```
 
 <h3> Variáveis de Ambiente </h3>
