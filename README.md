@@ -69,7 +69,7 @@ Como iniciar o projeto:
 
 ```bash
 cd webquarto-test/backend
-docker-compose down
+composer install
 docker-compose build
 docker-compose up -d
 docker exec webquarto php artisan migrate
