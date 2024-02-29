@@ -56,7 +56,7 @@ watchEffect(() => {
 
       <div class="buttons">
         <form @submit.prevent>
-          <button type="submit">Editar</button>
+          <router-link :to="{ name: 'EditHouse', params: {id: house.id} }">Editar</router-link>
           <button @click="authStore.handleHouseDelete(house.id)" type="submit">
             Excluir
           </button>
@@ -167,11 +167,13 @@ watchEffect(() => {
         gap: 10px;
       }
       border-top: 1px solid $ultra-light-grey;
-      button {
+      button, a{
         padding: 5px 15px;
         border: 1px solid $grey-blue;
         background: none;
         transition: 0.3s;
+        color: black;
+        text-decoration: none;
 
         &:hover {
           cursor: pointer;
