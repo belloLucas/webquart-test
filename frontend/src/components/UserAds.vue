@@ -119,8 +119,10 @@ watchEffect(() => {
     gap: 10px;
     min-height: 350px;
     max-height: 450px;
-    padding: 5px;
+    padding: 15px;
+    
 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: $white;
