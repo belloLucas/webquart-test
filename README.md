@@ -85,8 +85,7 @@ npm install
 npm run dev
 ``````
 
-Depois de executar o `npm run dev` a aplicação front end deverá estar disponível na url `localhost:5173`. Se certifique disso.
-
+Após o container rodar, o Front End estará disponível na url `localhost:5173`
 
 <h2 id="routes">📍 API Endpoints</h2>
 
